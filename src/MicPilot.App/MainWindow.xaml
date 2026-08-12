@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource BackgroundBrush}"
         Foreground="{StaticResource TextBrush}"
-        FontFamily="Segoe UI Variable Display, Segoe UI"
+        FontFamily="{StaticResource AppFontFamily}"
         FontSize="13"
         Icon="pack://application:,,,/MicPilot;component/Assets/app/micpilot_on.ico"
         ResizeMode="CanResize"

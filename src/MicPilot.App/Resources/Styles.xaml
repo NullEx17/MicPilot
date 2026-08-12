@@ -5,7 +5,7 @@
         <Setter Property="FontSize" Value="22" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
-        <Setter Property="FontFamily" Value="Segoe UI Variable Display, Segoe UI" />
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
     </Style>
 
     <Style x:Key="PageSubtitleStyle" TargetType="TextBlock">
@@ -187,7 +187,7 @@
         <Setter Property="Padding" Value="12,6" />
         <Setter Property="FontSize" Value="13" />
         <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="FontFamily" Value="Segoe UI Variable Display, Segoe UI" />
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="MinWidth" Value="56" />
         <Setter Property="Template">

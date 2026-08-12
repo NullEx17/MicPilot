@@ -1,7 +1,9 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Text;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using MicPilot.Core.Models;
 using MicPilot.Diagnostics;
@@ -29,6 +31,9 @@ public sealed class TrayIconService : IDisposable
     private readonly ToolStripMenuItem _headerItem;
     private readonly ToolStripMenuItem _statusItem;
     private readonly ToolStripMenuItem _toggleItem;
+    private readonly PrivateFontCollection _fonts = new();
+    private IntPtr _fontMemory = IntPtr.Zero;
+    private readonly Font _menuFont;
     private bool _disposed;
     private bool _isOn = true;
     private bool _audioRunning;
@@ -39,6 +44,7 @@ public sealed class TrayIconService : IDisposable
         _iconOn = LoadAppTrayIcon("micpilot_on_32x32.png");
         _iconOff = LoadAppTrayIcon("micpilot_muted_32x32.png");
         _iconIdle = LoadAppTrayIcon("micpilot_idle_32x32.png");
+        _menuFont = CreateMontserratFont(9f);
 
         _notifyIcon = new NotifyIcon
         {
@@ -61,7 +67,7 @@ public sealed class TrayIconService : IDisposable
             ShowImageMargin = false,
             ShowCheckMargin = false,
             Padding = new Padding(6, 6, 6, 6),
-            Font = new Font("Segoe UI", 9f, FontStyle.Regular)
+            Font = _menuFont
         };
 
         menu.Items.Add(_headerItem);
@@ -138,10 +144,43 @@ public sealed class TrayIconService : IDisposable
         _iconOn.Dispose();
         _iconOff.Dispose();
         _iconIdle.Dispose();
+        _menuFont.Dispose();
+        _fonts.Dispose();
+        if (_fontMemory != IntPtr.Zero)
+        {
+            Marshal.FreeCoTaskMem(_fontMemory);
+            _fontMemory = IntPtr.Zero;
+        }
     }
 
     private static string Truncate(string text) =>
         text.Length <= 63 ? text : text[..60] + "...";
+
+    private Font CreateMontserratFont(float size)
+    {
+        try
+        {
+            var uri = new Uri("pack://application:,,,/MicPilot;component/Assets/fonts/Montserrat-Regular.ttf", UriKind.Absolute);
+            var resource = System.Windows.Application.GetResourceStream(uri);
+            if (resource is null)
+            {
+                return new Font("Segoe UI", size, FontStyle.Regular);
+            }
+
+            using var stream = resource.Stream;
+            using var ms = new MemoryStream();
+            stream.CopyTo(ms);
+            var bytes = ms.ToArray();
+            _fontMemory = Marshal.AllocCoTaskMem(bytes.Length);
+            Marshal.Copy(bytes, 0, _fontMemory, bytes.Length);
+            _fonts.AddMemoryFont(_fontMemory, bytes.Length);
+            return new Font(_fonts.Families[0], size, FontStyle.Regular);
+        }
+        catch
+        {
+            return new Font("Segoe UI", size, FontStyle.Regular);
+        }
+    }
 
     private static Icon LoadAppTrayIcon(string fileName)
     {

@@ -20,3 +20,8 @@ https://github.com/naudio/NAudio
 
 Game / Discord / GitHub marks in the UI come from [Simple Icons](https://simpleicons.org) (CC0).  
 FiveM is drawn green to match the current client icon.
+
+## Montserrat
+
+UI font is [Montserrat](https://github.com/JulietaUla/Montserrat) (SIL Open Font License 1.1).  
+Bundled under `src/MicPilot.App/Assets/fonts/`.

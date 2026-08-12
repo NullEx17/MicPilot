@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterOwner"
         Background="{StaticResource BackgroundBrush}"
         Foreground="{StaticResource TextBrush}"
-        FontFamily="Segoe UI Variable Display, Segoe UI"
+        FontFamily="{StaticResource AppFontFamily}"
         ResizeMode="NoResize"
         WindowStyle="None"
         ShowInTaskbar="False">

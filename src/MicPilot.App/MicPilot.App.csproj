@@ -31,6 +31,7 @@
     <Resource Include="Assets\overlay\**\*" />
     <Resource Include="Assets\games\**\*" />
     <Resource Include="Assets\about\**\*" />
+    <Resource Include="Assets\fonts\**\*" />
     <Content Include="Assets\app\micpilot_on.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

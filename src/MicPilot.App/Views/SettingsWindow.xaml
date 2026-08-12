@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterOwner"
         Background="{StaticResource BackgroundBrush}"
         Foreground="{StaticResource TextBrush}"
-        FontFamily="Segoe UI"
+        FontFamily="{StaticResource AppFontFamily}"
         ResizeMode="CanMinimize">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20">

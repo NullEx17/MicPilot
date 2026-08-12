@@ -35,7 +35,7 @@
                        Text="ON"
                        FontSize="12"
                        FontWeight="SemiBold"
-                       FontFamily="Segoe UI Variable Display, Segoe UI"
+                       FontFamily="{StaticResource AppFontFamily}"
                        Foreground="#F5F5F5"
                        VerticalAlignment="Center" />
         </StackPanel>
