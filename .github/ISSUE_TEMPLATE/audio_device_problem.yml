@@ -1,0 +1,40 @@
+---
+name: Audio Device Problem
+about: Report microphone, virtual cable, or routing issues
+title: "[Audio] "
+labels: audio
+assignees: ''
+---
+
+## Description
+Describe the audio issue.
+
+## Setup
+- **Physical microphone:**
+- **Virtual microphone (e.g. CABLE Output):**
+- **Discord input device:**
+- **Game input device:**
+- **MicPilot input/output selection:**
+
+## Steps to reproduce
+1.
+2.
+3.
+
+## Expected behavior
+
+
+## Actual behavior
+
+
+## Environment
+- **MicPilot version:**
+- **Windows version:**
+- **VB-CABLE installed:** Yes / No
+- **Game/application:**
+
+## Diagnostics
+Paste diagnostics from **Settings → Copy Diagnostics**.
+
+## Notes
+Do not attach voice recordings.

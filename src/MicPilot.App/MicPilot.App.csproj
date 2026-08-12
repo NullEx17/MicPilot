@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\MicPilot.Core\MicPilot.Core.csproj" />
+    <ProjectReference Include="..\MicPilot.Audio\MicPilot.Audio.csproj" />
+    <ProjectReference Include="..\MicPilot.Hotkeys\MicPilot.Hotkeys.csproj" />
+    <ProjectReference Include="..\MicPilot.Profiles\MicPilot.Profiles.csproj" />
+    <ProjectReference Include="..\MicPilot.Diagnostics\MicPilot.Diagnostics.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>Assets\app\micpilot_on.ico</ApplicationIcon>
+    <AssemblyName>MicPilot</AssemblyName>
+    <Version>1.0.0</Version>
+    <Product>MicPilot</Product>
+    <Description>Voice routing without Push-to-Talk. Created by NullEx17.</Description>
+    <Authors>NullEx17</Authors>
+    <Company>NullEx17</Company>
+    <Copyright>Copyright © 2026 NullEx17</Copyright>
+  </PropertyGroup>
+
+    <ItemGroup>
+    <Resource Include="Assets\app\**\*" />
+    <Resource Include="Assets\tray\**\*" />
+    <Resource Include="Assets\overlay\**\*" />
+    <Resource Include="Assets\games\**\*" />
+    <Resource Include="Assets\about\**\*" />
+    <Content Include="Assets\app\micpilot_on.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

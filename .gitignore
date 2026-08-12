@@ -1,0 +1,41 @@
+# Build
+bin/
+obj/
+out/
+artifacts/
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs and local settings (runtime)
+*.log
+
+# Build artifacts / publish output
+artifacts/
+
+# NuGet
+packages/
+*.nupkg
+
+# Test results
+TestResults/
+coverage/
+
+# Brand source pack (icons already live under src/MicPilot.App/Assets)
+MicPilot-NullEx17-Brand.zip
+*.zip
+assets/brand/
+
+# One-off tooling build output (bin/obj already ignored)
+tools/**/bin/
+tools/**/obj/

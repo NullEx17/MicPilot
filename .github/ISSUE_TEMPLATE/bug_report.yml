@@ -1,0 +1,33 @@
+---
+name: Bug Report
+about: Report a bug in MicPilot
+title: "[Bug] "
+labels: bug
+assignees: ''
+---
+
+## Description
+A clear description of the bug.
+
+## Steps to reproduce
+1.
+2.
+3.
+
+## Expected behavior
+
+
+## Actual behavior
+
+
+## Environment
+- **MicPilot version:**
+- **Windows version:**
+- **Physical microphone:**
+- **Virtual microphone:**
+- **Game/application:**
+
+## Diagnostics
+Paste diagnostics from **Settings → Copy Diagnostics** (redact anything personal if needed).
+
+## Additional context

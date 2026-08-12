@@ -1,0 +1,64 @@
+<Window x:Class="MicPilot.App.Views.FirstRunWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:MicPilot.App.Controls"
+        Title="Welcome to MicPilot"
+        Width="460"
+        Height="560"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource BackgroundBrush}"
+        Foreground="{StaticResource TextBrush}"
+        FontFamily="Segoe UI"
+        ResizeMode="NoResize">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="22">
+            <TextBlock Text="Welcome to MicPilot" FontSize="18" FontWeight="Bold" />
+            <TextBlock Text="No more Push-to-Talk."
+                       Foreground="{StaticResource AccentBrush}"
+                       FontWeight="SemiBold"
+                       Margin="0,6,0,4" />
+            <TextBlock Text="Talk normally in Discord. Mute your game mic with one hotkey."
+                       Style="{StaticResource MutedTextStyle}"
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,18" />
+
+            <TextBlock Text="1. Physical microphone" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <ComboBox ItemsSource="{Binding CaptureDevices}"
+                      SelectedItem="{Binding SelectedInputDevice}"
+                      DisplayMemberPath="Name"
+                      Style="{StaticResource ComboBoxDarkStyle}"
+                      Margin="0,0,0,14" />
+
+            <TextBlock Text="2. Virtual microphone" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <TextBlock Text="{Binding VirtualMicName}" FontSize="12" Margin="0,0,0,6" TextWrapping="Wrap" />
+            <TextBlock Text="{Binding SetupInstruction}"
+                       Style="{StaticResource MutedTextStyle}"
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,14" />
+
+            <TextBlock Text="3. Hotkey" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <controls:HotkeyCaptureBox Hotkey="{Binding Hotkey, Mode=TwoWay}" Margin="0,0,0,14" />
+
+            <TextBlock Text="4. In your game" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <TextBlock Style="{StaticResource MutedTextStyle}" TextWrapping="Wrap" Margin="0,0,0,8">
+                Set the game/app input device to the virtual microphone above.
+                Keep Discord on your physical microphone.
+            </TextBlock>
+            <Button Content="Open Windows Sound Settings"
+                    Click="OpenSound_Click"
+                    Style="{StaticResource SecondaryButtonStyle}"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,0,20" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="8" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Skip" Style="{StaticResource SecondaryButtonStyle}" Click="Skip_Click" />
+                <Button Grid.Column="2" Content="Get Started" Style="{StaticResource PrimaryButtonStyle}" Click="Start_Click" />
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

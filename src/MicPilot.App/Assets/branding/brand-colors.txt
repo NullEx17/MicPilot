@@ -1,0 +1,22 @@
+MicPilot / NullEx17 visual direction
+
+Base:
+- Black: #0C0C0E
+- White: #F5F5F5
+- Gray: #9B9BA0
+- Dark gray: #2D2D32
+
+State colors ONLY:
+- ON: #32DC5F
+- MUTED: #EB373C
+
+Rules:
+- Simple
+- Flat
+- No gradients
+- No airplane
+- No pilot helmet
+- No headset
+- No decorative gaming mascot
+- No unnecessary cyan/purple
+- Green/red are state indicators, not brand colors

@@ -1,0 +1,110 @@
+<Window x:Class="MicPilot.App.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:MicPilot.App.Controls"
+        Title="Settings"
+        Width="480"
+        Height="680"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource BackgroundBrush}"
+        Foreground="{StaticResource TextBrush}"
+        FontFamily="Segoe UI"
+        ResizeMode="CanMinimize">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20">
+
+            <TextBlock Text="AUDIO" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,14">
+                <StackPanel>
+                    <TextBlock Text="Physical microphone" Style="{StaticResource MutedTextStyle}" Margin="0,0,0,6" />
+                    <ComboBox ItemsSource="{Binding CaptureDevices}"
+                              SelectedItem="{Binding SelectedInputDevice}"
+                              DisplayMemberPath="Name"
+                              Style="{StaticResource ComboBoxDarkStyle}"
+                              Margin="0,0,0,12" />
+                    <TextBlock Text="Virtual microphone (for games)" Style="{StaticResource MutedTextStyle}" />
+                    <TextBlock Text="{Binding VirtualMicrophoneName}" Margin="0,4,0,10" TextWrapping="Wrap" />
+                    <TextBlock Text="MicPilot writes to" Style="{StaticResource MutedTextStyle}" />
+                    <TextBlock Text="{Binding MicPilotOutputName}" Margin="0,4,0,10" TextWrapping="Wrap" />
+                    <TextBlock Text="Sample rate" Style="{StaticResource MutedTextStyle}" />
+                    <TextBlock Text="{Binding SampleRateText}" Margin="0,4,0,0" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="HOTKEYS" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,14">
+                <StackPanel>
+                    <TextBlock Text="Default hotkey" Style="{StaticResource MutedTextStyle}" Margin="0,0,0,6" />
+                    <controls:HotkeyCaptureBox Hotkey="{Binding GlobalHotkey, Mode=TwoWay}" Margin="0,0,0,12" />
+                    <TextBlock Text="Default mode" Style="{StaticResource MutedTextStyle}" Margin="0,0,0,6" />
+                    <ComboBox ItemsSource="{Binding ModeOptions}"
+                              SelectedItem="{Binding HotkeyMode}"
+                              Style="{StaticResource ComboBoxDarkStyle}" />
+                    <TextBlock Text="Profile hotkeys override this default. Walkie-talkie: hold = game mic ON."
+                               Style="{StaticResource MutedTextStyle}"
+                               Margin="0,8,0,0"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="OVERLAY" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,14">
+                <StackPanel>
+                    <CheckBox Content="Show status overlay" IsChecked="{Binding OverlayEnabled}" Style="{StaticResource CheckBoxDarkStyle}" />
+                    <CheckBox Content="Show on mute/unmute" IsChecked="{Binding OverlayShowOnChange}" Style="{StaticResource CheckBoxDarkStyle}" />
+                    <CheckBox Content="Always visible" IsChecked="{Binding OverlayAlwaysVisible}" Style="{StaticResource CheckBoxDarkStyle}" />
+                    <TextBlock Text="Position" Style="{StaticResource MutedTextStyle}" Margin="0,4,0,6" />
+                    <ComboBox ItemsSource="{Binding PositionOptions}" SelectedItem="{Binding OverlayPosition}" Style="{StaticResource ComboBoxDarkStyle}" Margin="0,0,0,10" />
+                    <TextBlock Text="Size" Style="{StaticResource MutedTextStyle}" Margin="0,0,0,6" />
+                    <ComboBox ItemsSource="{Binding SizeOptions}" SelectedItem="{Binding OverlaySize}" Style="{StaticResource ComboBoxDarkStyle}" Margin="0,0,0,10" />
+                    <TextBlock Text="Display duration (seconds)" Style="{StaticResource MutedTextStyle}" Margin="0,0,0,6" />
+                    <TextBox Text="{Binding OverlayDurationSeconds}" Style="{StaticResource TextBoxDarkStyle}" Margin="0,0,0,10" />
+                    <TextBlock Text="Opacity (0.4–1.0)" Style="{StaticResource MutedTextStyle}" Margin="0,0,0,6" />
+                    <TextBox Text="{Binding OverlayOpacity}" Style="{StaticResource TextBoxDarkStyle}" />
+                    <TextBlock Text="Exclusive fullscreen games may hide overlays. Prefer borderless fullscreen when possible."
+                               Style="{StaticResource MutedTextStyle}"
+                               Margin="0,10,0,0"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="GENERAL" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,14">
+                <StackPanel>
+                    <CheckBox Content="Start with Windows" IsChecked="{Binding StartWithWindows}" Style="{StaticResource CheckBoxDarkStyle}" />
+                    <CheckBox Content="Minimize to tray" IsChecked="{Binding MinimizeToTray}" Style="{StaticResource CheckBoxDarkStyle}" />
+                    <CheckBox Content="Start minimized" IsChecked="{Binding StartMinimized}" Style="{StaticResource CheckBoxDarkStyle}" />
+                    <CheckBox Content="Hide setup tip on main window" IsChecked="{Binding SetupTipDismissed}" Style="{StaticResource CheckBoxDarkStyle}" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="NOTIFICATIONS" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,14">
+                <StackPanel>
+                    <CheckBox Content="Enable Windows notifications" IsChecked="{Binding NotificationsEnabled}" Style="{StaticResource CheckBoxDarkStyle}" />
+                    <CheckBox Content="Notify on mute/unmute (overlay is preferred)" IsChecked="{Binding NotifyOnMuteToggle}" Style="{StaticResource CheckBoxDarkStyle}" />
+                    <CheckBox Content="Notify when a game is detected" IsChecked="{Binding NotifyOnGameDetected}" Style="{StaticResource CheckBoxDarkStyle}" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="DIAGNOSTICS" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,14">
+                <StackPanel>
+                    <Button Content="Open Logs" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,8" Click="OpenLogs_Click" />
+                    <Button Content="Copy Diagnostics" Style="{StaticResource SecondaryButtonStyle}" Click="CopyDiagnostics_Click" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="ABOUT" Style="{StaticResource SectionTitleStyle}" FontSize="12" />
+            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="MicPilot" FontWeight="SemiBold" FontSize="14" />
+                    <TextBlock Text="{Binding VersionText, StringFormat=Version {0}}" Style="{StaticResource MutedTextStyle}" Margin="0,4,0,4" />
+                    <TextBlock Text="No more Push-to-Talk." Foreground="{StaticResource AccentBrush}" FontWeight="SemiBold" />
+                </StackPanel>
+            </Border>
+
+            <Button Content="Save" Style="{StaticResource PrimaryButtonStyle}" Click="Save_Click" />
+        </StackPanel>
+    </ScrollViewer>
+</Window>
