@@ -1,1 +1,3 @@
-Drop screenshots in this folder if you want them on the README later.
+# Screenshots
+
+- `main.png` — Home screen (active profile, game mic, audio routing)

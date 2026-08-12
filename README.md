@@ -18,6 +18,8 @@ MicPilot fixes that. Discord keeps your real microphone. The game gets a virtual
 
 Also useful for VALORANT, CS2, and any Windows game that should not share Discord’s mic.
 
+![MicPilot Home — FiveM profile, game mic ON, HyperX mic routed to VB-CABLE](docs/screenshots/main.png)
+
 ## How it works
 
 | App | Microphone |
